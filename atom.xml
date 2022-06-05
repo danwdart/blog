@@ -67,72 +67,72 @@
 &lt;span id=&#34;cb3-3&#34;&gt;&lt;a href=&#34;#cb3-3&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;mv&lt;/span&gt; /mnt/root/nix2 /mnt/root/nix&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Finally I&#39;m able to have &lt;code&gt;/&lt;/code&gt; as a &lt;code&gt;tmpfs&lt;/code&gt;!&lt;/p&gt;
 &lt;p&gt;So I added the following to &lt;code&gt;hardware-configuration.nix&lt;/code&gt;:&lt;/p&gt;
-&lt;pre class=&#34;nix&#34;&gt;&lt;code&gt;{
-  fileSystems.&amp;quot;/&amp;quot; =
-    {
-      device = &amp;quot;tmpfs&amp;quot;;
-      fsType = &amp;quot;tmpfs&amp;quot;;
-      options = [
-        &amp;quot;size=2G&amp;quot;
-      ];
-    };
-
-  fileSystems.&amp;quot;/nix&amp;quot; =
-    {
-      device = &amp;quot;/dev/XXX&amp;quot;;
-      fsType = &amp;quot;btrfs&amp;quot;;
-      options = [
-        &amp;quot;subvol=/nix&amp;quot;
-        &amp;quot;noatime&amp;quot;
-      ];
-    };
-  
-  fileSystems.&amp;quot;/etc/ssh&amp;quot; =
-    {
-      device = &amp;quot;/dev/XXX&amp;quot;;
-      fsType = &amp;quot;btrfs&amp;quot;;
-      options = [
-        &amp;quot;subvol=/etc/ssh&amp;quot;
-        &amp;quot;noatime&amp;quot;
-      ];
-    };
-
-  fileSystems.&amp;quot;/etc/NetworkManager&amp;quot; =
-    {
-      device = &amp;quot;/dev/XXX&amp;quot;;
-      fsType = &amp;quot;btrfs&amp;quot;;
-      options = [
-        &amp;quot;subvol=/etc/NetworkManager&amp;quot;
-        &amp;quot;noatime&amp;quot;
-      ];
-    };
-  
-  fileSystems.&amp;quot;/var/lib&amp;quot; =
-    {
-      device = &amp;quot;/dev/XXX&amp;quot;;
-      fsType = &amp;quot;btrfs&amp;quot;;
-      options = [
-        &amp;quot;subvol=/var/lib&amp;quot;
-        &amp;quot;noatime&amp;quot;
-      ];
-    };
-
-  fileSystems.&amp;quot;/home&amp;quot; =
-    {
-      device = &amp;quot;/dev/XXX&amp;quot;;
-      fsType = &amp;quot;btrfs&amp;quot;;
-      options = [
-        &amp;quot;subvol=/home&amp;quot;
-        &amp;quot;noatime&amp;quot;
-      ];
-    };
-}&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb4&#34;&gt;&lt;pre class=&#34;sourceCode nix&#34;&gt;&lt;code class=&#34;sourceCode nix&#34;&gt;&lt;span id=&#34;cb4-1&#34;&gt;&lt;a href=&#34;#cb4-1&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-2&#34;&gt;&lt;a href=&#34;#cb4-2&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;va&#34;&gt;fileSystems&lt;/span&gt;.&lt;span class=&#34;st&#34;&gt;&amp;quot;&lt;/span&gt;/&lt;span class=&#34;st&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-3&#34;&gt;&lt;a href=&#34;#cb4-3&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-4&#34;&gt;&lt;a href=&#34;#cb4-4&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;device&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;tmpfs&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-5&#34;&gt;&lt;a href=&#34;#cb4-5&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;fsType&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;tmpfs&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-6&#34;&gt;&lt;a href=&#34;#cb4-6&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;options&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-7&#34;&gt;&lt;a href=&#34;#cb4-7&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;size=2G&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-8&#34;&gt;&lt;a href=&#34;#cb4-8&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-9&#34;&gt;&lt;a href=&#34;#cb4-9&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;};&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-10&#34;&gt;&lt;a href=&#34;#cb4-10&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-11&#34;&gt;&lt;a href=&#34;#cb4-11&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;va&#34;&gt;fileSystems&lt;/span&gt;.&lt;span class=&#34;st&#34;&gt;&amp;quot;/nix&amp;quot;&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-12&#34;&gt;&lt;a href=&#34;#cb4-12&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-13&#34;&gt;&lt;a href=&#34;#cb4-13&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;device&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;/dev/XXX&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-14&#34;&gt;&lt;a href=&#34;#cb4-14&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;fsType&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;btrfs&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-15&#34;&gt;&lt;a href=&#34;#cb4-15&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;options&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-16&#34;&gt;&lt;a href=&#34;#cb4-16&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;subvol=/nix&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-17&#34;&gt;&lt;a href=&#34;#cb4-17&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;noatime&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-18&#34;&gt;&lt;a href=&#34;#cb4-18&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-19&#34;&gt;&lt;a href=&#34;#cb4-19&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;};&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-20&#34;&gt;&lt;a href=&#34;#cb4-20&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;/span&gt;
+&lt;span id=&#34;cb4-21&#34;&gt;&lt;a href=&#34;#cb4-21&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;va&#34;&gt;fileSystems&lt;/span&gt;.&lt;span class=&#34;st&#34;&gt;&amp;quot;/etc/ssh&amp;quot;&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-22&#34;&gt;&lt;a href=&#34;#cb4-22&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-23&#34;&gt;&lt;a href=&#34;#cb4-23&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;device&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;/dev/XXX&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-24&#34;&gt;&lt;a href=&#34;#cb4-24&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;fsType&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;btrfs&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-25&#34;&gt;&lt;a href=&#34;#cb4-25&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;options&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-26&#34;&gt;&lt;a href=&#34;#cb4-26&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;subvol=/etc/ssh&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-27&#34;&gt;&lt;a href=&#34;#cb4-27&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;noatime&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-28&#34;&gt;&lt;a href=&#34;#cb4-28&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-29&#34;&gt;&lt;a href=&#34;#cb4-29&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;};&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-30&#34;&gt;&lt;a href=&#34;#cb4-30&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-31&#34;&gt;&lt;a href=&#34;#cb4-31&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;va&#34;&gt;fileSystems&lt;/span&gt;.&lt;span class=&#34;st&#34;&gt;&amp;quot;/etc/NetworkManager&amp;quot;&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-32&#34;&gt;&lt;a href=&#34;#cb4-32&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-33&#34;&gt;&lt;a href=&#34;#cb4-33&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;device&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;/dev/XXX&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-34&#34;&gt;&lt;a href=&#34;#cb4-34&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;fsType&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;btrfs&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-35&#34;&gt;&lt;a href=&#34;#cb4-35&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;options&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-36&#34;&gt;&lt;a href=&#34;#cb4-36&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;subvol=/etc/NetworkManager&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-37&#34;&gt;&lt;a href=&#34;#cb4-37&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;noatime&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-38&#34;&gt;&lt;a href=&#34;#cb4-38&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-39&#34;&gt;&lt;a href=&#34;#cb4-39&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;};&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-40&#34;&gt;&lt;a href=&#34;#cb4-40&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;/span&gt;
+&lt;span id=&#34;cb4-41&#34;&gt;&lt;a href=&#34;#cb4-41&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;va&#34;&gt;fileSystems&lt;/span&gt;.&lt;span class=&#34;st&#34;&gt;&amp;quot;/var/lib&amp;quot;&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-42&#34;&gt;&lt;a href=&#34;#cb4-42&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-43&#34;&gt;&lt;a href=&#34;#cb4-43&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;device&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;/dev/XXX&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-44&#34;&gt;&lt;a href=&#34;#cb4-44&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;fsType&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;btrfs&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-45&#34;&gt;&lt;a href=&#34;#cb4-45&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;options&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-46&#34;&gt;&lt;a href=&#34;#cb4-46&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;subvol=/var/lib&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-47&#34;&gt;&lt;a href=&#34;#cb4-47&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;noatime&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-48&#34;&gt;&lt;a href=&#34;#cb4-48&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-49&#34;&gt;&lt;a href=&#34;#cb4-49&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;};&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-50&#34;&gt;&lt;a href=&#34;#cb4-50&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-51&#34;&gt;&lt;a href=&#34;#cb4-51&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;va&#34;&gt;fileSystems&lt;/span&gt;.&lt;span class=&#34;st&#34;&gt;&amp;quot;/home&amp;quot;&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-52&#34;&gt;&lt;a href=&#34;#cb4-52&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-53&#34;&gt;&lt;a href=&#34;#cb4-53&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;device&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;/dev/XXX&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-54&#34;&gt;&lt;a href=&#34;#cb4-54&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;fsType&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;btrfs&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-55&#34;&gt;&lt;a href=&#34;#cb4-55&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;va&#34;&gt;options&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-56&#34;&gt;&lt;a href=&#34;#cb4-56&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;subvol=/home&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-57&#34;&gt;&lt;a href=&#34;#cb4-57&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;st&#34;&gt;&amp;quot;noatime&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-58&#34;&gt;&lt;a href=&#34;#cb4-58&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-59&#34;&gt;&lt;a href=&#34;#cb4-59&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;};&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-60&#34;&gt;&lt;a href=&#34;#cb4-60&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;and making sure my passwords were immutable and persistent via the clauses in configuration.nix:&lt;/p&gt;
-&lt;pre class=&#34;nix&#34;&gt;&lt;code&gt;{
-  users.mutableUsers = false;
-  users.users.root.initialHashedPassword = &amp;quot;$6$8RZ1PPxKU6h$dNHnIWiq.h8s.7SpMW14FzK9bJwg1f6Mt.972/2Fij4zPrhR0X4m3JTNPtGAyeMKZk3I8x/Xro.vJolwVvwd9.&amp;quot;;
-  users.users.dwd.initialHashedPassword = &amp;quot;$6$EDn9CboEV/$ESAQifZD0wiVkYf1MuyLqs.hP7mvelpoPnSGEI7CmwuUifi090PT6FQqHsdhlZSXSlqrT9EH.mIfUvxPCA5q.1&amp;quot;;
-}&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb5&#34;&gt;&lt;pre class=&#34;sourceCode nix&#34;&gt;&lt;code class=&#34;sourceCode nix&#34;&gt;&lt;span id=&#34;cb5-1&#34;&gt;&lt;a href=&#34;#cb5-1&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-2&#34;&gt;&lt;a href=&#34;#cb5-2&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;va&#34;&gt;users&lt;/span&gt;.&lt;span class=&#34;va&#34;&gt;mutableUsers&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;cn&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-3&#34;&gt;&lt;a href=&#34;#cb5-3&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;va&#34;&gt;users&lt;/span&gt;.&lt;span class=&#34;va&#34;&gt;users&lt;/span&gt;.&lt;span class=&#34;va&#34;&gt;root&lt;/span&gt;.&lt;span class=&#34;va&#34;&gt;initialHashedPassword&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;$6$8RZ1PPxKU6h$dNHnIWiq.h8s.7SpMW14FzK9bJwg1f6Mt.972/2Fij4zPrhR0X4m3JTNPtGAyeMKZk3I8x/Xro.vJolwVvwd9.&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-4&#34;&gt;&lt;a href=&#34;#cb5-4&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;va&#34;&gt;users&lt;/span&gt;.&lt;span class=&#34;va&#34;&gt;users&lt;/span&gt;.&lt;span class=&#34;va&#34;&gt;dwd&lt;/span&gt;.&lt;span class=&#34;va&#34;&gt;initialHashedPassword&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;st&#34;&gt;&amp;quot;$6$EDn9CboEV/$ESAQifZD0wiVkYf1MuyLqs.hP7mvelpoPnSGEI7CmwuUifi090PT6FQqHsdhlZSXSlqrT9EH.mIfUvxPCA5q.1&amp;quot;&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-5&#34;&gt;&lt;a href=&#34;#cb5-5&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;(hey, they&#39;re hashed and SHA-512&#39;d, do you want to try to crack them?)&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Triggering a rebuild and a reboot (to actually apply &lt;code&gt;/&lt;/code&gt; as &lt;code&gt;tmpfs&lt;/code&gt;), and success! Hooray!&lt;/p&gt;
 &lt;p&gt;I can now delete everything from the root subvolume that I didn&#39;t make into a subvolume.&lt;/p&gt;

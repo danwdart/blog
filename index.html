@@ -68,72 +68,72 @@
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> /mnt/root/nix2 /mnt/root/nix</span></code></pre></div>
 <p>Finally I'm able to have <code>/</code> as a <code>tmpfs</code>!</p>
 <p>So I added the following to <code>hardware-configuration.nix</code>:</p>
-<pre class="nix"><code>{
-  fileSystems.&quot;/&quot; =
-    {
-      device = &quot;tmpfs&quot;;
-      fsType = &quot;tmpfs&quot;;
-      options = [
-        &quot;size=2G&quot;
-      ];
-    };
-
-  fileSystems.&quot;/nix&quot; =
-    {
-      device = &quot;/dev/XXX&quot;;
-      fsType = &quot;btrfs&quot;;
-      options = [
-        &quot;subvol=/nix&quot;
-        &quot;noatime&quot;
-      ];
-    };
-  
-  fileSystems.&quot;/etc/ssh&quot; =
-    {
-      device = &quot;/dev/XXX&quot;;
-      fsType = &quot;btrfs&quot;;
-      options = [
-        &quot;subvol=/etc/ssh&quot;
-        &quot;noatime&quot;
-      ];
-    };
-
-  fileSystems.&quot;/etc/NetworkManager&quot; =
-    {
-      device = &quot;/dev/XXX&quot;;
-      fsType = &quot;btrfs&quot;;
-      options = [
-        &quot;subvol=/etc/NetworkManager&quot;
-        &quot;noatime&quot;
-      ];
-    };
-  
-  fileSystems.&quot;/var/lib&quot; =
-    {
-      device = &quot;/dev/XXX&quot;;
-      fsType = &quot;btrfs&quot;;
-      options = [
-        &quot;subvol=/var/lib&quot;
-        &quot;noatime&quot;
-      ];
-    };
-
-  fileSystems.&quot;/home&quot; =
-    {
-      device = &quot;/dev/XXX&quot;;
-      fsType = &quot;btrfs&quot;;
-      options = [
-        &quot;subvol=/home&quot;
-        &quot;noatime&quot;
-      ];
-    };
-}</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode nix"><code class="sourceCode nix"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">fileSystems</span>.<span class="st">&quot;</span>/<span class="st">&quot;</span> <span class="op">=</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="va">device</span> <span class="op">=</span> <span class="st">&quot;tmpfs&quot;</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">fsType</span> <span class="op">=</span> <span class="st">&quot;tmpfs&quot;</span><span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="va">options</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;size=2G&quot;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">];</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="va">fileSystems</span>.<span class="st">&quot;/nix&quot;</span> <span class="op">=</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="va">device</span> <span class="op">=</span> <span class="st">&quot;/dev/XXX&quot;</span><span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="va">fsType</span> <span class="op">=</span> <span class="st">&quot;btrfs&quot;</span><span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>      <span class="va">options</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;subvol=/nix&quot;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;noatime&quot;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>      <span class="op">];</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="va">fileSystems</span>.<span class="st">&quot;/etc/ssh&quot;</span> <span class="op">=</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>      <span class="va">device</span> <span class="op">=</span> <span class="st">&quot;/dev/XXX&quot;</span><span class="op">;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>      <span class="va">fsType</span> <span class="op">=</span> <span class="st">&quot;btrfs&quot;</span><span class="op">;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>      <span class="va">options</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;subvol=/etc/ssh&quot;</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;noatime&quot;</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>      <span class="op">];</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="va">fileSystems</span>.<span class="st">&quot;/etc/NetworkManager&quot;</span> <span class="op">=</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>      <span class="va">device</span> <span class="op">=</span> <span class="st">&quot;/dev/XXX&quot;</span><span class="op">;</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>      <span class="va">fsType</span> <span class="op">=</span> <span class="st">&quot;btrfs&quot;</span><span class="op">;</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>      <span class="va">options</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;subvol=/etc/NetworkManager&quot;</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;noatime&quot;</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>      <span class="op">];</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  <span class="va">fileSystems</span>.<span class="st">&quot;/var/lib&quot;</span> <span class="op">=</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>      <span class="va">device</span> <span class="op">=</span> <span class="st">&quot;/dev/XXX&quot;</span><span class="op">;</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>      <span class="va">fsType</span> <span class="op">=</span> <span class="st">&quot;btrfs&quot;</span><span class="op">;</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>      <span class="va">options</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;subvol=/var/lib&quot;</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;noatime&quot;</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>      <span class="op">];</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="va">fileSystems</span>.<span class="st">&quot;/home&quot;</span> <span class="op">=</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>      <span class="va">device</span> <span class="op">=</span> <span class="st">&quot;/dev/XXX&quot;</span><span class="op">;</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>      <span class="va">fsType</span> <span class="op">=</span> <span class="st">&quot;btrfs&quot;</span><span class="op">;</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>      <span class="va">options</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;subvol=/home&quot;</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;noatime&quot;</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>      <span class="op">];</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>and making sure my passwords were immutable and persistent via the clauses in configuration.nix:</p>
-<pre class="nix"><code>{
-  users.mutableUsers = false;
-  users.users.root.initialHashedPassword = &quot;$6$8RZ1PPxKU6h$dNHnIWiq.h8s.7SpMW14FzK9bJwg1f6Mt.972/2Fij4zPrhR0X4m3JTNPtGAyeMKZk3I8x/Xro.vJolwVvwd9.&quot;;
-  users.users.dwd.initialHashedPassword = &quot;$6$EDn9CboEV/$ESAQifZD0wiVkYf1MuyLqs.hP7mvelpoPnSGEI7CmwuUifi090PT6FQqHsdhlZSXSlqrT9EH.mIfUvxPCA5q.1&quot;;
-}</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode nix"><code class="sourceCode nix"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">users</span>.<span class="va">mutableUsers</span> <span class="op">=</span> <span class="cn">false</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">users</span>.<span class="va">users</span>.<span class="va">root</span>.<span class="va">initialHashedPassword</span> <span class="op">=</span> <span class="st">&quot;$6$8RZ1PPxKU6h$dNHnIWiq.h8s.7SpMW14FzK9bJwg1f6Mt.972/2Fij4zPrhR0X4m3JTNPtGAyeMKZk3I8x/Xro.vJolwVvwd9.&quot;</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">users</span>.<span class="va">users</span>.<span class="va">dwd</span>.<span class="va">initialHashedPassword</span> <span class="op">=</span> <span class="st">&quot;$6$EDn9CboEV/$ESAQifZD0wiVkYf1MuyLqs.hP7mvelpoPnSGEI7CmwuUifi090PT6FQqHsdhlZSXSlqrT9EH.mIfUvxPCA5q.1&quot;</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p><em>(hey, they're hashed and SHA-512'd, do you want to try to crack them?)</em></p>
 <p>Triggering a rebuild and a reboot (to actually apply <code>/</code> as <code>tmpfs</code>), and success! Hooray!</p>
 <p>I can now delete everything from the root subvolume that I didn't make into a subvolume.</p>
